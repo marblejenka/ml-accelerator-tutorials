@@ -12,3 +12,5 @@ datagroup: bigquery_public_ml_datasets_default_datagroup {
 persist_with: bigquery_public_ml_datasets_default_datagroup
 
 explore: census_adult_income {}
+
+explore: penguins {}

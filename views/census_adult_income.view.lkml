@@ -1,6 +1,5 @@
 view: census_adult_income {
-  sql_table_name: `bigquery-public-data.ml_datasets.census_adult_income`
-    ;;
+  sql_table_name: `bigquery-public-data.ml_datasets.census_adult_income` ;;
 
   dimension: age {
     type: number
