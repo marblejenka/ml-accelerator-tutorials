@@ -1,4 +1,4 @@
-connection: "bigquery_ml_service_account"
+connection: "bigquery_ml_oauth"
 label: "BigQuery Public Datasets for ML"
 
 # include all the views
