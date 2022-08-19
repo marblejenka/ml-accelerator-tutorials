@@ -56,7 +56,12 @@ view: census_adult_income {
   dimension: income_bracket {
     type: string
     description: "Either \">50K\" or \"<=50K\" based on income."
-    sql: ${TABLE}.income_bracket ;;
+    # sql: ${TABLE}.income_bracket ;;
+    sql: CASE
+            WHEN ${dataframe} = 'training' THEN ${TABLE}.income_bracket
+            WHEN ${dataframe} = 'evaluation' THEN ${TABLE}.income_bracket
+            WHEN ${dataframe} = 'prediction' THEN NULL
+          END ;;
   }
 
   dimension: marital_status {
