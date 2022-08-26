@@ -1,8 +1,5 @@
 view: ticket {
-  derived_table: {
-    sql: SELECT * FROM `looker-private-demo.zendesk.ticket`
-      ;;
-  }
+  sql_table_name: `looker-private-demo.zendesk.ticket` ;;
 
   measure: count {
     type: count

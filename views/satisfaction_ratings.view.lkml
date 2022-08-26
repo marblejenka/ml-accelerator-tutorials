@@ -1,8 +1,5 @@
 view: satisfaction_ratings {
-  derived_table: {
-    sql: SELECT * FROM `looker-private-demo.zendesk.satisfaction_ratings`
-      ;;
-  }
+    sql_table_name: `looker-private-demo.zendesk.satisfaction_ratings` ;;
 
   measure: count {
     type: count
