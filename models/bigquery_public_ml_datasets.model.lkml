@@ -16,3 +16,14 @@ explore: census_adult_income {}
 explore: penguins {}
 
 explore: google_analytics_sample {}
+
+explore: zendesk_tickets {
+  view_name: ticket
+
+  join: satisfaction_ratings {
+    type: left_outer
+    sql: ${ticket.id} = ${satisfaction_ratings.ticket_id} ;;
+    relationship: one_to_one
+  }
+
+}
