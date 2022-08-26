@@ -1,11 +1,6 @@
 view: ticket {
   sql_table_name: `looker-private-demo.zendesk.ticket` ;;
 
-  measure: count {
-    type: count
-    drill_fields: [detail*]
-  }
-
   dimension: required_followup {
     type: number
     sql: ${TABLE}.required_followup ;;
@@ -32,6 +27,7 @@ view: ticket {
   }
 
   dimension: id {
+    primary_key: yes
     type: string
     sql: ${TABLE}.id ;;
   }
@@ -135,6 +131,11 @@ view: ticket {
   dimension: satisfaction_score {
     type: string
     sql: ${TABLE}.satisfaction_score ;;
+  }
+
+  measure: count {
+    type: count
+    drill_fields: [detail*]
   }
 
   set: detail {

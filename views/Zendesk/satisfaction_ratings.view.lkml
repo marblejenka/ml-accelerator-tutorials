@@ -1,11 +1,6 @@
 view: satisfaction_ratings {
     sql_table_name: `looker-private-demo.zendesk.satisfaction_ratings` ;;
 
-  measure: count {
-    type: count
-    drill_fields: [detail*]
-  }
-
   dimension: assignee_id {
     type: string
     sql: ${TABLE}.assignee_id ;;
@@ -27,6 +22,7 @@ view: satisfaction_ratings {
   }
 
   dimension: id {
+    primary_key: yes
     type: string
     sql: ${TABLE}.id ;;
   }
@@ -39,6 +35,11 @@ view: satisfaction_ratings {
   dimension: comment {
     type: string
     sql: ${TABLE}.comment ;;
+  }
+
+  measure: count {
+    type: count
+    drill_fields: [detail*]
   }
 
   set: detail {
