@@ -19,6 +19,10 @@ explore: google_analytics_sample {}
 
 explore: ticket {
   label: "Zendesk Tickets"
-}
 
-# explore: satisfaction_ratings {}
+  join: satisfaction_ratings {
+    type: left_outer
+    sql_on: ${ticket.id} = ${satisfaction_ratings.ticket_id} ;;
+    relationship: one_to_many
+  }
+}
