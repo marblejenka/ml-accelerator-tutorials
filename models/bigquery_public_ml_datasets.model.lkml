@@ -11,14 +11,21 @@ datagroup: bigquery_public_ml_datasets_default_datagroup {
 
 persist_with: bigquery_public_ml_datasets_default_datagroup
 
-explore: census_adult_income {}
+explore: census_adult_income {
+  hidden: yes
+}
 
-explore: penguins {}
+explore: penguins {
+  hidden: yes
+}
 
-explore: google_analytics_sample {}
+explore: google_analytics_sample {
+  hidden: yes
+}
 
 explore: ticket {
   label: "Zendesk Tickets"
+  hidden: yes
 
   join: satisfaction_ratings {
     type: left_outer
