@@ -1,5 +1,16 @@
 view: census_adult_income {
-  sql_table_name: `bigquery-public-data.ml_datasets.census_adult_income` ;;
+  derived_table: {
+    sql:  SELECT *, GENERATE_UUID() as uuid
+          FROM `bigquery-public-data.ml_datasets.census_adult_income`
+    ;;
+  }
+
+  dimension: uuid {
+    primary_key: yes
+    label: "Unique ID"
+    type: string
+    sql: ${TABLE}.uuid ;;
+  }
 
   dimension: age {
     type: number
