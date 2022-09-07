@@ -1,16 +1,17 @@
 view: penguins {
-  derived_table: {
-    sql:  SELECT *, GENERATE_UUID() as uuid
-          FROM `bigquery-public-data.ml_datasets.penguins`
-    ;;
-  }
+  sql_table_name: `bigquery-public-data.ml_datasets.penguins` ;;
+  # derived_table: {
+  #   sql:  SELECT *, GENERATE_UUID() as uuid
+  #         FROM `bigquery-public-data.ml_datasets.penguins`
+  #   ;;
+  # }
 
-  dimension: uuid {
-    primary_key: yes
-    label: "Unique ID"
-    type: string
-    sql: ${TABLE}.uuid ;;
-  }
+  # dimension: uuid {
+  #   primary_key: yes
+  #   label: "Unique ID"
+  #   type: string
+  #   sql: ${TABLE}.uuid ;;
+  # }
 
   dimension: species {
     type: string
