@@ -1,4 +1,4 @@
-connection: "bqml_accelerator"
+connection: "bigquery"
 label: "Public Datasets for BQML Accelerator"
 
 persist_for: "24 hours"
