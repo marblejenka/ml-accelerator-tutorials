@@ -133,9 +133,24 @@ view: ticket {
     sql: NULLIF(${TABLE}.satisfaction_score, 'offered') ;;
   }
 
-  measure: count {
+  measure: ticket_count {
     type: count
     drill_fields: [detail*]
+  }
+
+  measure: customer_count {
+    type: count_distinct
+    sql: ${organization_id} ;;
+  }
+
+  measure: positive_feedback_count {
+    type: count
+    filters: [satisfaction_score: "good"]
+  }
+
+  measure: negative_feedback_count {
+    type: count
+    filters: [satisfaction_score: "bad"]
   }
 
   set: detail {
