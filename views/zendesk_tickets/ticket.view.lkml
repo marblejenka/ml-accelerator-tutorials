@@ -2,8 +2,8 @@ view: ticket {
   sql_table_name: `looker-private-demo.zendesk.ticket` ;;
 
   dimension: required_followup {
-    type: number
-    sql: ${TABLE}.required_followup ;;
+    type: yesno
+    sql: ${TABLE}.required_followup = 1 ;;
   }
 
   dimension: chat_duration {
