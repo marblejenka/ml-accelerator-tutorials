@@ -47,10 +47,10 @@ view: ticket {
     sql: ${TABLE}.submitter_id ;;
   }
 
-  dimension_group: old_created_at {
-    type: time
-    sql: ${TABLE}.old_created_at ;;
-  }
+  # dimension_group: old_created_at {
+  #   type: time
+  #   sql: ${TABLE}.old_created_at ;;
+  # }
 
   dimension_group: created_at {
     type: time
@@ -63,30 +63,30 @@ view: ticket {
     sql: ${TABLE}.via_channel ;;
   }
 
-  dimension: tone {
-    type: string
-    sql: ${TABLE}.tone ;;
-  }
+  # dimension: tone {
+  #   type: string
+  #   sql: ${TABLE}.tone ;;
+  # }
 
-  dimension: action {
-    type: string
-    sql: ${TABLE}.action ;;
-  }
+  # dimension: action {
+  #   type: string
+  #   sql: ${TABLE}.action ;;
+  # }
 
-  dimension: request_or_bug_ {
-    type: string
-    sql: ${TABLE}.request_or_bug_ ;;
-  }
+  # dimension: request_or_bug_ {
+  #   type: string
+  #   sql: ${TABLE}.request_or_bug_ ;;
+  # }
 
   dimension: priority {
     type: string
     sql: ${TABLE}.priority ;;
   }
 
-  dimension: topic {
-    type: string
-    sql: ${TABLE}.topic ;;
-  }
+  # dimension: topic {
+  #   type: string
+  #   sql: ${TABLE}.topic ;;
+  # }
 
   dimension: status {
     type: string
@@ -103,10 +103,10 @@ view: ticket {
     sql: ${TABLE}.self_assessment ;;
   }
 
-  dimension: escalation {
-    type: string
-    sql: ${TABLE}.escalation ;;
-  }
+  # dimension: escalation {
+  #   type: string
+  #   sql: ${TABLE}.escalation ;;
+  # }
 
   dimension: issue_complexity {
     type: string
@@ -130,7 +130,7 @@ view: ticket {
 
   dimension: satisfaction_score {
     type: string
-    sql: ${TABLE}.satisfaction_score ;;
+    sql: NULLIF(${TABLE}.satisfaction_score, 'offered') ;;
   }
 
   measure: count {
@@ -149,18 +149,12 @@ view: ticket {
       organization_id,
       requester_id,
       submitter_id,
-      old_created_at_time,
       created_at_time,
       via_channel,
-      tone,
-      action,
-      request_or_bug_,
       priority,
-      topic,
       status,
       reason,
       self_assessment,
-      escalation,
       issue_complexity,
       timeframe,
       next_step_owner,
