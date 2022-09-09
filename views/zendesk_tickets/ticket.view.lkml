@@ -146,7 +146,7 @@ view: ticket {
 
   dimension: self_assessment {
     type: string
-    sql: ${TABLE}.self_assessment ;;
+    sql: NULLIF(${TABLE}.self_assessment,'n_aa') ;;
   }
 
   # dimension: escalation {
@@ -156,7 +156,7 @@ view: ticket {
 
   dimension: issue_complexity {
     type: string
-    sql: ${TABLE}.issue_complexity ;;
+    sql: NULLIF(${TABLE}.issue_complexity,'n_a') ;;
   }
 
   dimension: timeframe {
@@ -201,15 +201,14 @@ view: ticket {
 
   set: detail {
     fields: [
-      id,
       status,
       created_at_time,
-      chat_duration,
       via_channel,
       priority,
       type,
       reason,
       issue_complexity,
+      chat_duration,
       required_followup,
       self_assessment,
       satisfaction_score
