@@ -1,8 +1,3 @@
-
-
-
-
-
 connection: "bigquery"
 label: "Public Datasets for BQML Accelerator"
 
