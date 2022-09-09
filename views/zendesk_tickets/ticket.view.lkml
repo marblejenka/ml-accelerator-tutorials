@@ -201,25 +201,17 @@ view: ticket {
 
   set: detail {
     fields: [
-      required_followup,
-      chat_duration,
-      assignee_id,
-      group_id,
-      original_due_date_time,
       id,
-      organization_id,
-      requester_id,
-      submitter_id,
+      status,
       created_at_time,
+      chat_duration,
       via_channel,
       priority,
-      status,
-      reason,
-      self_assessment,
-      issue_complexity,
-      timeframe,
-      next_step_owner,
       type,
+      reason,
+      issue_complexity,
+      required_followup,
+      self_assessment,
       satisfaction_score
     ]
   }
