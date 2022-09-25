@@ -6,7 +6,6 @@ view: purchase_propensity {
         time_on_site,
         will_buy_on_return_visit
       FROM (
-            # select features
             SELECT
               fullVisitorId,
               IFNULL(totals.bounces, 0) AS bounces,
@@ -15,8 +14,7 @@ view: purchase_propensity {
               `data-to-insights.ecommerce.web_analytics`
             WHERE
               totals.newVisits = 1
-            AND date BETWEEN '20160801' # train on first 9 months of data
-            AND '20170430'
+              AND date BETWEEN '20160801' AND '20170430'
            )
       JOIN (
             SELECT
@@ -39,11 +37,6 @@ view: purchase_propensity {
        ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [detail*]
-  }
-
   dimension: full_visitor_id {
     type: string
     sql: ${TABLE}.fullVisitorId ;;
@@ -62,6 +55,11 @@ view: purchase_propensity {
   dimension: will_buy_on_return_visit {
     type: number
     sql: ${TABLE}.will_buy_on_return_visit ;;
+  }
+
+  measure: count {
+    type: count
+    drill_fields: [detail*]
   }
 
   set: detail {
