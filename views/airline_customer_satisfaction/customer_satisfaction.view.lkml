@@ -12,6 +12,7 @@ view: customer_satisfaction {
   }
 
   dimension: satisfaction {
+    label: "Satisfaction Rating"
     type: string
     sql: ${TABLE}.satisfaction ;;
   }
