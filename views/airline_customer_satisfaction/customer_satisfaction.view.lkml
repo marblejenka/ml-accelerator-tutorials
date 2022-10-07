@@ -14,23 +14,28 @@ view: customer_satisfaction {
   dimension: satisfaction {
     label: "Satisfaction Rating"
     type: string
-    sql: ${TABLE}.satisfaction ;;
+    # sql: ${TABLE}.satisfaction ;;
+    sql:  CASE
+            WHEN FARM_FINGERPRINT(${unique_id}) <= -4619029773043665920 THEN ${TABLE}.satisfaction
+            ELSE NULL
+          END
+    ;;
   }
 
-  dimension: gender {
-    type: string
-    sql: ${TABLE}.Gender ;;
-  }
+  # dimension: gender {
+  #   type: string
+  #   sql: ${TABLE}.Gender ;;
+  # }
 
   dimension: customer_type {
     type: string
     sql: ${TABLE}.Customer_Type ;;
   }
 
-  dimension: age {
-    type: number
-    sql: ${TABLE}.Age ;;
-  }
+  # dimension: age {
+  #   type: number
+  #   sql: ${TABLE}.Age ;;
+  # }
 
   dimension: type_of_travel {
     type: string
@@ -135,9 +140,7 @@ view: customer_satisfaction {
   set: detail {
     fields: [
       satisfaction,
-      gender,
       customer_type,
-      age,
       type_of_travel,
       class,
       flight_distance,
