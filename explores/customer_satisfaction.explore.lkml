@@ -4,6 +4,6 @@ explore: customer_satisfaction {
   label: "Airline Customer Satisfaction"
 }
 
-explore: customer_satisfaction_likert_scale {
+explore: customer_satisfaction_survey {
   label: "Airline Customer Satisfaction Survey"
 }
