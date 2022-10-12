@@ -1,7 +1,7 @@
 view: customer_satisfaction {
   derived_table: {
     sql:  SELECT *, GENERATE_UUID() as unique_id
-          FROM `bqml-accelerator.airline_customer_satisfaction.satisfaction_survey`
+          FROM `bqml-accelerator.airline_customer_satisfaction.satisfaction_survey_biglake_table`
     ;;
   }
 

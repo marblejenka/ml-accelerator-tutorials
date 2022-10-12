@@ -5,5 +5,6 @@ explore: customer_satisfaction {
 }
 
 explore: customer_satisfaction_survey {
+  hidden: yes
   label: "Airline Customer Satisfaction Survey"
 }
