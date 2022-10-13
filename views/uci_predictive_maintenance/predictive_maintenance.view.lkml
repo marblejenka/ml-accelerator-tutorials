@@ -43,8 +43,8 @@ view: predictive_maintenance {
   dimension: machine_failure {
     type: string
     sql:  CASE
-            WHEN ${dataframe} = 'train + evaluate' AND ${failure_type} <> 'No Failure' THEN 'Yes'
-            WHEN ${dataframe} = 'train + evaluate' AND ${failure_type} = 'No Failure' THEN 'No'
+            WHEN ${dataframe} = 'train + evaluate' AND ${failure_type} <> 'No Failure' THEN 'Failure'
+            WHEN ${dataframe} = 'train + evaluate' AND ${failure_type} = 'No Failure' THEN 'No Failure'
             ELSE NULL
           END
     ;;

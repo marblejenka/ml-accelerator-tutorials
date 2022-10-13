@@ -7,7 +7,7 @@ explore: predict_machine_failure_predictions {
   label: "Machine Failure Predictions"
 
   join: predict_machine_failure_predictions__predicted_predictive_maintenance_machine_failure_probs {
-    view_label: "Predict Machine Failure Predictions: Predicted Predictive Maintenance Machine Failure Probs"
+    view_label: "Prediction Probabilities"
     sql: LEFT JOIN UNNEST(${predict_machine_failure_predictions.predicted_predictive_maintenance_machine_failure_probs}) as predict_machine_failure_predictions__predicted_predictive_maintenance_machine_failure_probs ;;
     relationship: one_to_many
   }
