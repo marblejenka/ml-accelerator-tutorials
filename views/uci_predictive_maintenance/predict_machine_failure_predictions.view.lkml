@@ -13,7 +13,7 @@ view: predict_machine_failure_predictions {
   # This dimension will be called "Predicted Predictive Maintenance Machine Failure" in Explore.
 
   dimension: predicted_predictive_maintenance_machine_failure {
-    label: "_Prediction"
+    label: "PREDICTION"
     type: string
     sql: ${TABLE}.predicted_predictive_maintenance_machine_failure ;;
   }
