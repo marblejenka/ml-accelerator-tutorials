@@ -66,6 +66,7 @@ view: predictive_maintenance {
             WHEN ${TABLE}.Type = 'L' THEN 'Low'
             WHEN ${TABLE}.Type = 'M' THEN 'Medium'
             WHEN ${TABLE}.Type = 'H' THEN 'High'
+          END
     ;;
   }
 
