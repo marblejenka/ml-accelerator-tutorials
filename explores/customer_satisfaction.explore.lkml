@@ -8,3 +8,7 @@ explore: customer_satisfaction_survey {
   hidden: yes
   label: "Airline Customer Satisfaction Survey"
 }
+
+explore: customer_satisfaction_survey_attribute_pcts {
+  hidden: yes
+}

@@ -12,7 +12,7 @@ view: customer_satisfaction {
   }
 
   dimension: satisfaction {
-    label: "Satisfaction Rating"
+    label: "Overall Satisfaction"
     type: string
     # sql: ${TABLE}.satisfaction ;;
     sql:  CASE
@@ -29,7 +29,8 @@ view: customer_satisfaction {
 
   dimension: customer_type {
     type: string
-    sql: ${TABLE}.Customer_Type ;;
+    sql: case ${TABLE}.Customer_Type when 'Loyal customer' then 'Loyalty member'
+                    when 'disloyal customer' then 'Loyalty non-member' end ;;
   }
 
   # dimension: age {
@@ -136,6 +137,8 @@ view: customer_satisfaction {
     type: count
     drill_fields: [detail*]
   }
+
+
 
   set: detail {
     fields: [

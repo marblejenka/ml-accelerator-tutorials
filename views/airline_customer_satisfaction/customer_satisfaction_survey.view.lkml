@@ -1,75 +1,159 @@
-include: "/views/airline_customer_satisfaction/customer_satisfaction.view"
+#unpivot demo data for survey to support a dashboard showing avgerage scores
+
+# include: "/views/airline_customer_satisfaction/customer_satisfaction.view"
 
 view: customer_satisfaction_survey {
- extends: [customer_satisfaction]
+derived_table: {
+  sql: SELECT  *
+        , cast(attribute_score as string) as attribute_score_string
+        , generate_uuid() as unique_id
+
+FROM `bqml-accelerator.airline_customer_satisfaction.satisfaction_survey_biglake_table` as t
+UNPIVOT(attribute_score FOR attribute IN (seat_comfort,
+      departure_arrival_time_convenient,
+      food_and_drink,
+      gate_location,
+      inflight_wifi_service,
+      inflight_entertainment,
+      online_support,
+      ease_of_online_booking,
+      on_board_service,
+      leg_room_service,
+      baggage_handling,
+      checkin_service,
+      cleanliness,
+      online_boarding
+      ))
+ ;;
+}
+
+measure: count {
+  type: count
+  drill_fields: [detail*]
+}
+
+ dimension: satisfaction {
+  label: "Overall Satisfaction"
+  type: string
+  # sql: ${TABLE}.satisfaction ;;
+  sql:  CASE
+            WHEN FARM_FINGERPRINT(${unique_id}) <= -4619029773043665920 THEN ${TABLE}.satisfaction
+            ELSE NULL
+          END
+    ;;
+}
 
 
-  dimension: seat_comfort {
-    type: string
-    sql: cast(${TABLE}.Seat_comfort as string) ;;
+
+# dimension: gender {
+#   type: string
+#   sql: ${TABLE}.Gender ;;
+# }
+
+dimension: customer_type {
+  type: string
+  sql: case ${TABLE}.Customer_Type when 'Loyal customer' then 'Loyalty member'
+    when 'disloyal customer' then 'Loyalty non-member' end ;;
+}
+
+# dimension: age {
+#   type: number
+#   sql: ${TABLE}.Age ;;
+# }
+
+dimension: type_of_travel {
+  type: string
+  sql: ${TABLE}.Type_of_Travel ;;
+}
+
+dimension: class {
+  type: string
+  sql: ${TABLE}.Class ;;
+}
+
+dimension: flight_distance {
+  type: number
+  sql: ${TABLE}.Flight_Distance ;;
+}
+
+dimension: attribute_score {
+  type: number
+  sql: ${TABLE}.attribute_score ;;
+}
+
+dimension: attribute_score_group {
+  type: string
+  sql: case ${attribute_score} when 0 then "No Response"
+                               when 1 then "very dissatisfied"
+                               when 2 then "dissatisfied"
+                               when 3 then "neutral"
+                               when 4 then "satisfied"
+                               when 5 then "very satisfied"
+       end;;
+}
+
+dimension: attribute {
+  type: string
+  sql: regexp_replace(${TABLE}.attribute,'_',' ') ;;
+}
+
+dimension: attribute_score_string {
+  type: string
+  sql: ${TABLE}.attribute_score_string ;;
+}
+
+dimension: departure_delay_in_minutes {
+  type: number
+  sql: ${TABLE}.departure_delay_in_minutes ;;
+}
+
+dimension: arrival_delay_in_minutes {
+  type: number
+  sql: ${TABLE}.arrival_delay_in_minutes ;;
+}
+dimension: unique_id {
+  type: string
+  sql: ${TABLE}.unique_id ;;
+}
+
+dimension: pk {
+  type: string
+  sql: ${unique_id}||${attribute} ;;
+}
+
+measure: avg_attribute_score {
+  type: average
+  sql: ${attribute_score} ;;
+}
+
+measure: avg_arrival_delay_in_minutes {
+  type: average
+  sql: ${arrival_delay_in_minutes} ;;
+}
+
+  measure: avg_departure_delay_in_minutes {
+    type: average
+    sql: ${departure_delay_in_minutes} ;;
   }
 
-
-
-  dimension: food_and_drink {
-    type: string
-    sql: cast(${TABLE}.Food_and_drink as string) ;;
+  measure: avg_flight_distance {
+    type: average
+    sql: ${flight_distance} ;;
   }
 
-  dimension: gate_location {
-    type: string
-    sql: cast(${TABLE}.Gate_location as string) ;;
-  }
+set: detail {
+  fields: [
+    satisfaction,
 
-  dimension: inflight_wifi_service {
-    type: string
-    sql: cast(${TABLE}.Inflight_wifi_service as string);;
-  }
+    customer_type,
 
-  dimension: inflight_entertainment {
-    type: string
-    sql: cast(${TABLE}.Inflight_entertainment as string) ;;
-  }
-
-  dimension: online_support {
-    type: string
-    sql: cast(${TABLE}.Online_support as string) ;;
-  }
-
-  dimension: ease_of_online_booking {
-    type: string
-    sql: cast(${TABLE}.Ease_of_Online_booking as string) ;;
-  }
-
-  dimension: on_board_service {
-    type: string
-    sql: cast(${TABLE}.On_board_service as string) ;;
-  }
-
-  dimension: leg_room_service {
-    type: string
-    sql: cast(${TABLE}.Leg_room_service as string) ;;
-  }
-
-  dimension: baggage_handling {
-    type: string
-    sql: cast(${TABLE}.Baggage_handling as string) ;;
-  }
-
-  dimension: checkin_service {
-    type: string
-    sql: cast(${TABLE}.Checkin_service as string);;
-  }
-
-  dimension: cleanliness {
-    type: string
-    sql: cast(${TABLE}.Cleanliness as string);;
-  }
-
-  dimension: online_boarding {
-    type: string
-    sql: cast(${TABLE}.Online_boarding as string);;
-  }
-
-
- }
+    type_of_travel,
+    class,
+    flight_distance,
+    attribute_score,
+    attribute,
+    attribute_score_string,
+    unique_id
+  ]
+}
+}
