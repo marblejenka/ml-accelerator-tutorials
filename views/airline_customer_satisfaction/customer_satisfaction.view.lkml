@@ -1,7 +1,7 @@
 view: customer_satisfaction {
   derived_table: {
     sql:  SELECT *, GENERATE_UUID() as unique_id
-          FROM `bqml-accelerator.airline_customer_satisfaction.satisfaction_survey_biglake_table`
+          FROM `bqml-accelerator.airline_customer_satisfaction.satisfaction_survey`
     ;;
   }
 
@@ -29,8 +29,9 @@ view: customer_satisfaction {
 
   dimension: customer_type {
     type: string
-    sql: case ${TABLE}.Customer_Type when 'Loyal customer' then 'Loyalty member'
-                    when 'disloyal customer' then 'Loyalty non-member' end ;;
+    # sql: ${TABLE}.Customer_Type ;;
+    sql: case ${TABLE}.Customer_Type when 'Loyal Customer' then 'Loyalty member'
+                    when 'disloyal Customer' then 'Loyalty non-member' end ;;
   }
 
   # dimension: age {
