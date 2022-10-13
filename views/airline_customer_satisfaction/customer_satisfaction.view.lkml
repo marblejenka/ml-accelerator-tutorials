@@ -139,7 +139,17 @@ view: customer_satisfaction {
     drill_fields: [detail*]
   }
 
+  measure: count_satisfied {
+    type: count
+    filters: [satisfaction: "satisfied"]
 
+  }
+
+  measure: pct_satisfied {
+    type: number
+    sql: ${count_satisfied}/${count} ;;
+    value_format_name: percent_1
+  }
 
   set: detail {
     fields: [
