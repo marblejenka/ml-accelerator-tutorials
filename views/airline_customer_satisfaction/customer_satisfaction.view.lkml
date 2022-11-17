@@ -142,10 +142,9 @@ view: customer_satisfaction {
   measure: count_satisfied {
     type: count
     filters: [satisfaction: "satisfied"]
-
   }
 
-  measure: pct_satisfied {
+  measure: percent_satisfied {
     type: number
     sql: ${count_satisfied}/${count} ;;
     value_format_name: percent_1
