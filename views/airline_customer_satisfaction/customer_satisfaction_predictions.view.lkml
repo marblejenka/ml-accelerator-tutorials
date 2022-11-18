@@ -102,12 +102,26 @@ view: customer_satisfaction_predictions {
   measure: count_satisfied {
     type: count
     filters: [predicted_satisfaction: "satisfied"]
+    drill_fields: [detail*]
   }
 
   measure: percent_satisfied {
     type: number
     sql: ${count_satisfied}/${count} ;;
     value_format_name: percent_1
+  }
+
+  measure: average_arrival_delay {
+    description: "Average arrival delay in minutes"
+    type: average
+    sql: ${arrival_delay_in_minutes} ;;
+    value_format_name: decimal_0
+  }
+
+  measure: average_flight_distance {
+    type: average
+    sql: ${flight_distance} ;;
+    value_format_name: decimal_0
   }
 
   set: detail {
@@ -149,11 +163,6 @@ view: customer_satisfaction_predictions__predicted_satisfaction_probs {
   dimension: probability {
     type: number
     sql: prob ;;
-  }
-
-  measure: total_probability {
-    type: sum
-    sql: ${probability} ;;
   }
 
   measure: average_probability {
