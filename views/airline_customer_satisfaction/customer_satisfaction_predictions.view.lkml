@@ -101,7 +101,7 @@ view: customer_satisfaction_predictions {
 
   measure: count_satisfied {
     type: count
-    filters: [satisfaction: "satisfied"]
+    filters: [predicted_satisfaction: "satisfied"]
   }
 
   measure: percent_satisfied {
