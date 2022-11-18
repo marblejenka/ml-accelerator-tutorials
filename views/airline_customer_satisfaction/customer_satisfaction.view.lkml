@@ -150,6 +150,19 @@ view: customer_satisfaction {
     value_format_name: percent_1
   }
 
+  measure: average_arrival_delay {
+    description: "Average arrival delay in minutes"
+    type: average
+    sql: ${arrival_delay_in_minutes} ;;
+    value_format_name: decimal_0
+  }
+
+  measure: average_flight_distance {
+    type: average
+    sql: ${flight_distance} ;;
+    value_format_name: decimal_0
+  }
+
   set: detail {
     fields: [
       satisfaction,
