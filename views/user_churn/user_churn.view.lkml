@@ -1,4 +1,4 @@
-view: churn_prediction {
+view: user_churn {
   sql_table_name: `bqmlpublic.demo_ga4churnprediction.training_data`;;
 
 # user ID

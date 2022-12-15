@@ -1,7 +1,7 @@
-include: "/views/churn_prediction/*.view"
+include: "/views/user_churn/*.view"
 
-explore: churn_prediction {
-  label: "Churn Prediction"
+explore: user_churn {
+  label: "User Churn"
 }
 
 # explore: customer_satisfaction_predictions {
