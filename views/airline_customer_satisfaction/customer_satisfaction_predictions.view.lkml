@@ -126,21 +126,12 @@ view: customer_satisfaction_predictions {
 
   set: detail {
     fields: [
-      satisfaction,
+      unique_id,
       customer_type,
       type_of_travel,
       flight_distance,
-      seat_comfort,
-      departure_arrival_time_convenient,
-      inflight_entertainment,
-      online_support,
-      ease_of_online_booking,
-      on_board_service,
-      leg_room_service,
-      baggage_handling,
-      checkin_service,
-      cleanliness,
-      arrival_delay_in_minutes
+      arrival_delay_in_minutes,
+      predicted_satisfaction
     ]
   }
 }
