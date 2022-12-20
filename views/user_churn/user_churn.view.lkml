@@ -55,7 +55,7 @@ view: user_churn {
   dimension: cnt_add_payment_info {
     group_label: "Behavioural Features"
     label: "Add Payment Info Event Count"
-    description: "Count of add_payment_info event occurance in first 24 hours"
+    description: "Count of add_payment_info event occurrence in first 24 hours"
     type: number
     sql: ${TABLE}.cnt_add_payment_info ;;
   }
@@ -63,7 +63,7 @@ view: user_churn {
   dimension: cnt_add_shipping_info {
     group_label: "Behavioural Features"
     label: "Add Shipping Info Event Count"
-    description: "Count of add_shipping_info event occurance in first 24 hours"
+    description: "Count of add_shipping_info event occurrence in first 24 hours"
     type: number
     sql: ${TABLE}.cnt_add_shipping_info ;;
   }
@@ -71,7 +71,7 @@ view: user_churn {
   dimension: cnt_add_to_cart {
     group_label: "Behavioural Features"
     label: "Add to Cart Event Count"
-    description: "Count of add_to_cart event occurance in first 24 hours"
+    description: "Count of add_to_cart event occurrence in first 24 hours"
     type: number
     sql: ${TABLE}.cnt_add_to_cart ;;
   }
@@ -79,7 +79,7 @@ view: user_churn {
   dimension: cnt_begin_checkout {
     group_label: "Behavioural Features"
     label: "Begin Checkout Event Count"
-    description: "Count of begin_checkout event occurance in first 24 hours"
+    description: "Count of begin_checkout event occurrence in first 24 hours"
     type: number
     sql: ${TABLE}.cnt_begin_checkout ;;
   }
@@ -87,7 +87,7 @@ view: user_churn {
   dimension: cnt_page_view {
     group_label: "Behavioural Features"
     label: "Page View Event Count"
-    description: "Count of page_view event occurance in first 24 hours"
+    description: "Count of page_view event occurrence in first 24 hours"
     type: number
     sql: ${TABLE}.cnt_page_view ;;
   }
@@ -95,7 +95,7 @@ view: user_churn {
   dimension: cnt_purchase {
     group_label: "Behavioural Features"
     label: "Purchase Event Count"
-    description: "Count of purchase event occurance in first 24 hours"
+    description: "Count of purchase event occurrence in first 24 hours"
     type: number
     sql: ${TABLE}.cnt_purchase ;;
   }
@@ -103,7 +103,7 @@ view: user_churn {
   dimension: cnt_select_promotion {
     group_label: "Behavioural Features"
     label: "Select Promotion Event Count"
-    description: "Count of select_promotion event occurance in first 24 hours"
+    description: "Count of select_promotion event occurrence in first 24 hours"
     type: number
     sql: ${TABLE}.cnt_select_promotion ;;
   }
@@ -111,7 +111,7 @@ view: user_churn {
   dimension: cnt_user_engagement {
     group_label: "Behavioural Features"
     label: "User Engagement Count"
-    description: "Count of user_engagement event occurance in first 24 hours"
+    description: "Count of user_engagement event occurrence in first 24 hours"
     type: number
     sql: ${TABLE}.cnt_user_engagement ;;
   }
@@ -119,7 +119,7 @@ view: user_churn {
   dimension: cnt_view_item {
     group_label: "Behavioural Features"
     label: "View Item Event Count"
-    description: "Count of view_item event occurance in first 24 hours"
+    description: "Count of view_item event occurrence in first 24 hours"
     type: number
     sql: ${TABLE}.cnt_view_item ;;
   }
@@ -127,7 +127,7 @@ view: user_churn {
   dimension: cnt_view_promotion {
     group_label: "Behavioural Features"
     label: "View Promotion Event Count"
-    description: "Count of view_promotion event occurance in first 24 hours"
+    description: "Count of view_promotion event occurrence in first 24 hours"
     type: number
     sql: ${TABLE}.cnt_view_promotion ;;
   }
@@ -154,6 +154,8 @@ view: user_churn {
   # }
 
   dimension_group: user_first_engagement {
+    group_label: "Date related features"
+    label: "User's first engagement"
     type: time
     timeframes: [
       raw,
