@@ -141,11 +141,13 @@ view: user_churn {
   #   sql: ${TABLE}.dayofweek ;;
   # }
 
-  # dimension: julianday {
-  #   description: "Day of the year of user's first engagement"
-  #   type: number
-  #   sql: ${TABLE}.julianday ;;
-  # }
+  dimension: julianday {
+    group_label: "Date related features"
+    label: "User's first engagement Julianday"
+    description: "User's first engagement Julianday"
+    type: number
+    sql: ${TABLE}.julianday ;;
+  }
 
   # dimension: month {
   #   description: "Month of user's first engagement"
