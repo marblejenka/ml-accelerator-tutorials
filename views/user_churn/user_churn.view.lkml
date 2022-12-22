@@ -3,7 +3,7 @@ view: user_churn {
 
 # user ID
 # {
-  dimension: user_pseudo_id {
+  dimension: user_id {
     primary_key: yes
     label: "UserID"
     description: "Represents a unique user with a distinct user ID"
@@ -14,8 +14,8 @@ view: user_churn {
 
 # Label
 # {
-  dimension: churned {
-    group_label: "Label"
+  dimension: churn_indicator {
+    # group_label: "Label"
     label: "Churn Indicator"
     type: string
     sql: cast(${TABLE}.churned as string) ;;
@@ -33,7 +33,7 @@ view: user_churn {
     sql: ${TABLE}.country ;;
   }
 
-  dimension: language {
+  dimension: device_language {
     group_label: "Demographic Features"
     label: "Device Language"
     description: "Device Language information from device.language"
@@ -41,7 +41,7 @@ view: user_churn {
     sql: ${TABLE}.language ;;
   }
 
-  dimension: operating_system {
+  dimension: device_os {
     group_label: "Demographic Features"
     label: "Device OS"
     description: "Device OS information from device.operating_system"
@@ -52,7 +52,7 @@ view: user_churn {
 
 # behavioral features in the first 24 hours of visiting the Google Merchandise Store
 # {
-  dimension: cnt_add_payment_info {
+  dimension: add_payment_info_event_count {
     group_label: "Behavioural Features"
     label: "Add Payment Info Event Count"
     description: "Count of add_payment_info event occurrence in first 24 hours"
@@ -60,7 +60,7 @@ view: user_churn {
     sql: ${TABLE}.cnt_add_payment_info ;;
   }
 
-  dimension: cnt_add_shipping_info {
+  dimension: add_shipping_info_event_count {
     group_label: "Behavioural Features"
     label: "Add Shipping Info Event Count"
     description: "Count of add_shipping_info event occurrence in first 24 hours"
@@ -68,7 +68,7 @@ view: user_churn {
     sql: ${TABLE}.cnt_add_shipping_info ;;
   }
 
-  dimension: cnt_add_to_cart {
+  dimension: add_to_cart_event_count {
     group_label: "Behavioural Features"
     label: "Add to Cart Event Count"
     description: "Count of add_to_cart event occurrence in first 24 hours"
@@ -76,7 +76,7 @@ view: user_churn {
     sql: ${TABLE}.cnt_add_to_cart ;;
   }
 
-  dimension: cnt_begin_checkout {
+  dimension: begin_checkout_event_count {
     group_label: "Behavioural Features"
     label: "Begin Checkout Event Count"
     description: "Count of begin_checkout event occurrence in first 24 hours"
@@ -84,7 +84,7 @@ view: user_churn {
     sql: ${TABLE}.cnt_begin_checkout ;;
   }
 
-  dimension: cnt_page_view {
+  dimension: page_view_event_count {
     group_label: "Behavioural Features"
     label: "Page View Event Count"
     description: "Count of page_view event occurrence in first 24 hours"
@@ -92,7 +92,7 @@ view: user_churn {
     sql: ${TABLE}.cnt_page_view ;;
   }
 
-  dimension: cnt_purchase {
+  dimension: purchase_event_count {
     group_label: "Behavioural Features"
     label: "Purchase Event Count"
     description: "Count of purchase event occurrence in first 24 hours"
@@ -100,7 +100,7 @@ view: user_churn {
     sql: ${TABLE}.cnt_purchase ;;
   }
 
-  dimension: cnt_select_promotion {
+  dimension: select_promotion_event_count {
     group_label: "Behavioural Features"
     label: "Select Promotion Event Count"
     description: "Count of select_promotion event occurrence in first 24 hours"
@@ -108,7 +108,7 @@ view: user_churn {
     sql: ${TABLE}.cnt_select_promotion ;;
   }
 
-  dimension: cnt_user_engagement {
+  dimension: user_engagement_event_count {
     group_label: "Behavioural Features"
     label: "User Engagement Count"
     description: "Count of user_engagement event occurrence in first 24 hours"
@@ -116,7 +116,7 @@ view: user_churn {
     sql: ${TABLE}.cnt_user_engagement ;;
   }
 
-  dimension: cnt_view_item {
+  dimension: view_item_event_count {
     group_label: "Behavioural Features"
     label: "View Item Event Count"
     description: "Count of view_item event occurrence in first 24 hours"
@@ -124,7 +124,7 @@ view: user_churn {
     sql: ${TABLE}.cnt_view_item ;;
   }
 
-  dimension: cnt_view_promotion {
+  dimension: view_promotion_event_count {
     group_label: "Behavioural Features"
     label: "View Promotion Event Count"
     description: "Count of view_promotion event occurrence in first 24 hours"
