@@ -110,7 +110,7 @@ view: user_churn {
 
   dimension: user_engagement_event_count {
     group_label: "Behavioural Features"
-    label: "User Engagement Count"
+    label: "User Engagement Event Count"
     description: "Count of user_engagement event occurrence in first 24 hours"
     type: number
     sql: ${TABLE}.cnt_user_engagement ;;
