@@ -4,6 +4,10 @@ explore: user_churn {
   label: "User Churn"
 }
 
+explore: user_churn_prediction {
+  label: "User Churn Prediction"
+}
+
 # explore: customer_satisfaction_predictions {
 #   hidden: yes
 
