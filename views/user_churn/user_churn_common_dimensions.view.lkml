@@ -3,7 +3,7 @@ view: user_churn_common_dimensions {
 # {
   dimension: user_id {
     primary_key: yes
-    label: "UserID"
+    label: "User Id"
     description: "Represents a unique user with a distinct user ID"
     type: string
     sql: ${TABLE}.user_pseudo_id ;;
