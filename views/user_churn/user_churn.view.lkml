@@ -25,13 +25,13 @@ view: user_churn {
   }
 # }
 
-# Prediction Flag
-# {
-dimension: prediction_flag {
-  # group_label: "Label"
-  label: "Prediction Flag"
-  type: yesno
-  sql: ${TABLE}.prediction_flag;;
-  }
-# }
+# # Prediction Flag
+# # {
+# dimension: prediction_flag {
+#   # group_label: "Label"
+#   label: "Prediction Flag"
+#   type: yesno
+#   sql: ${TABLE}.prediction_flag;;
+#   }
+# # }
 }
