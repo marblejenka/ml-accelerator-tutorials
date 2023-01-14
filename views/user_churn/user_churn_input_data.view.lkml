@@ -2,7 +2,7 @@ view: user_churn_input_data {
    derived_table: {
     sql: select * except(churned), case when ntile>1 then null else churned end as churned,
       case when ntile = 1 then true else false end as training_flag
-      -- ,case when ntile = 2 then true else false end as prediction_flag
+      /* ,case when ntile = 2 then true else false end as prediction_flag */
     from
     (select *,
       NTILE(3) over (
@@ -13,15 +13,15 @@ view: user_churn_input_data {
   }
 }
 
-## farmfingerprint
+# # farmfingerprint
 # view: user_churn_input_data {
 #   derived_table: {
 #     sql: select * except(churned)
 #     case when ABS(MOD(FARM_FINGERPRINT(user_pseudo_id), 10)) > 7 then null else churned end as churned,
-#     --, case when ABS(MOD(FARM_FINGERPRINT(user_pseudo_id), 10)) >= 9 then null else churned end as churned,
+#     /*, case when ABS(MOD(FARM_FINGERPRINT(user_pseudo_id), 10)) >= 9 then null else churned end as churned,*/
 #     case when ABS(MOD(FARM_FINGERPRINT(user_pseudo_id), 10)) <= 7 then true else false end as training_flag
-#       -- case when ABS(MOD(FARM_FINGERPRINT(user_pseudo_id), 10)) <= 7 then true when ABS(MOD(FARM_FINGERPRINT(user_pseudo_id), 10)) between 7 and 9 then false end as training_flag,
-#       -- case when ABS(MOD(FARM_FINGERPRINT(user_pseudo_id), 10)) >= 9 then true else false end as prediction_flag
+#     /*   case when ABS(MOD(FARM_FINGERPRINT(user_pseudo_id), 10)) <= 7 then true when ABS(MOD(FARM_FINGERPRINT(user_pseudo_id), 10)) between 7 and 9 then false end as training_flag,
+#       case when ABS(MOD(FARM_FINGERPRINT(user_pseudo_id), 10)) >= 9 then true else false end as prediction_flag */
 #     from `bqmlpublic.demo_ga4churnprediction.training_data`
 #   ;;
 #   }
