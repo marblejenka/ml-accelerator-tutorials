@@ -1,6 +1,8 @@
 include: "/views/uci_predictive_maintenance/*.view"
 
-explore: predictive_maintenance {}
+explore: predictive_maintenance {
+  persist_for: "24 hours"
+}
 
 # Un-hide and use this explore, or copy the joins into another explore, to get all the fully nested relationships from this view
 explore: predict_machine_failure_predictions {
