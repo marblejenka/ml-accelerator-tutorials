@@ -124,6 +124,8 @@ view: user_churn_common_dimensions {
 # user_first_engagement time related features
 # {
   dimension: dayofweek {
+    group_label: "Date related features"
+    label: "User's first engagement Day of Week"
     description: "Day of the week of user's first engagement"
     type: number
     sql: ${TABLE}.dayofweek ;;
