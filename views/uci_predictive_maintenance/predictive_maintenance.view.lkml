@@ -4,7 +4,7 @@ view: predictive_maintenance {
   dimension: dataframe {
     type: string
     sql:  CASE
-            WHEN FARM_FINGERPRINT(${machine_id}) < 4602018618904989184 THEN 'train + evaluate'
+            WHEN FARM_FINGERPRINT(${machine_id}) >= 4602018618904989184 THEN 'train'
             ELSE 'predict'
           END
     ;;
