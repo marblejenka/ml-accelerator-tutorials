@@ -19,13 +19,13 @@ view: citi_bike_trips {
   dimension_group: start {
     type: time
     sql: ${TABLE}.starttime ;;
-    timeframes: [raw, date, time]
+    timeframes: [raw, date, time, day_of_week, hour_of_day]
   }
 
   dimension_group: stop {
     type: time
     sql: ${TABLE}.stoptime ;;
-    timeframes: [raw, date, time]
+    timeframes: [raw, date, time, day_of_week, hour_of_day]
   }
 
   dimension_group: journey_time {
@@ -141,6 +141,7 @@ view: citi_bike_trips {
     description: "Average Trip Duration (Minutes)"
     type: average
     sql: ${minutes_journey_time} ;;
+    value_format_name: decimal_2
   }
 
   measure: total_trip_duration {
@@ -152,6 +153,7 @@ view: citi_bike_trips {
   measure: average_rider_age {
     type: average
     sql: ${age} ;;
+    value_format_name: decimal_2
   }
 
   set: detail {
