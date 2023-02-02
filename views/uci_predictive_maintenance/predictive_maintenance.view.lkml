@@ -4,7 +4,7 @@ view: predictive_maintenance {
   dimension: dataframe {
     type: string
     sql:  CASE
-            WHEN FARM_FINGERPRINT(${machine_id}) < 4602018618904989184 THEN 'train + evaluate'
+            WHEN FARM_FINGERPRINT(${machine_id}) < 4602018618904989184 THEN 'train'
             ELSE 'predict'
           END
     ;;
@@ -18,7 +18,7 @@ view: predictive_maintenance {
   dimension: failure_type {
     type: string
     sql:  CASE
-            WHEN ${dataframe} = 'train + evaluate' THEN ${TABLE}.Failure_Type
+            WHEN ${dataframe} = 'train' THEN ${TABLE}.Failure_Type
             ELSE NULL
           END
     ;;
@@ -43,8 +43,8 @@ view: predictive_maintenance {
   dimension: machine_failure {
     type: string
     sql:  CASE
-            WHEN ${dataframe} = 'train + evaluate' AND ${failure_type} <> 'No Failure' THEN 'Failure'
-            WHEN ${dataframe} = 'train + evaluate' AND ${failure_type} = 'No Failure' THEN 'No Failure'
+            WHEN ${dataframe} = 'train' AND ${failure_type} <> 'No Failure' THEN 'Failure'
+            WHEN ${dataframe} = 'train' AND ${failure_type} = 'No Failure' THEN 'No Failure'
             ELSE NULL
           END
     ;;
