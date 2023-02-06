@@ -17,11 +17,19 @@ view: user_churn {
 
 # Label
 # {
+  # dimension: churn_indicator {
+  #   # group_label: "Label"
+  #   label: "Churn Indicator"
+  #   type: string
+  #   # sql: cast(${TABLE}.churned as string) ;;
+  #   sql: (case when cast(${TABLE}.churned as string) = "1" then "Churned" when cast(${TABLE}.churned as string)= "0" then "Not Churned" else Null end) ;;
+  # }
   dimension: churn_indicator {
     # group_label: "Label"
     label: "Churn Indicator"
     type: string
-    sql: cast(${TABLE}.churned as string) ;;
+    # sql: cast(${TABLE}.churned as string) ;;
+    sql: (case when cast(${TABLE}.churned as string) = "1" then "True" when cast(${TABLE}.churned as string)= "0" then "False" else Null end) ;;
   }
 # }
 

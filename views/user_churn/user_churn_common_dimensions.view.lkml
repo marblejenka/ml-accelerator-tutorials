@@ -40,62 +40,6 @@ view: user_churn_common_dimensions {
 
 # behavioral features in the first 24 hours of visiting the Google Merchandise Store
 # {
-  dimension: add_payment_info_event_count {
-    group_label: "Behavioural Features"
-    label: "Add Payment Info Event Count"
-    description: "Count of add_payment_info event occurrence in first 24 hours"
-    type: number
-    sql: ${TABLE}.cnt_add_payment_info ;;
-  }
-
-  dimension: add_shipping_info_event_count {
-    group_label: "Behavioural Features"
-    label: "Add Shipping Info Event Count"
-    description: "Count of add_shipping_info event occurrence in first 24 hours"
-    type: number
-    sql: ${TABLE}.cnt_add_shipping_info ;;
-  }
-
-  dimension: add_to_cart_event_count {
-    group_label: "Behavioural Features"
-    label: "Add to Cart Event Count"
-    description: "Count of add_to_cart event occurrence in first 24 hours"
-    type: number
-    sql: ${TABLE}.cnt_add_to_cart ;;
-  }
-
-  dimension: begin_checkout_event_count {
-    group_label: "Behavioural Features"
-    label: "Begin Checkout Event Count"
-    description: "Count of begin_checkout event occurrence in first 24 hours"
-    type: number
-    sql: ${TABLE}.cnt_begin_checkout ;;
-  }
-
-  dimension: page_view_event_count {
-    group_label: "Behavioural Features"
-    label: "Page View Event Count"
-    description: "Count of page_view event occurrence in first 24 hours"
-    type: number
-    sql: ${TABLE}.cnt_page_view ;;
-  }
-
-  dimension: purchase_event_count {
-    group_label: "Behavioural Features"
-    label: "Purchase Event Count"
-    description: "Count of purchase event occurrence in first 24 hours"
-    type: number
-    sql: ${TABLE}.cnt_purchase ;;
-  }
-
-  dimension: select_promotion_event_count {
-    group_label: "Behavioural Features"
-    label: "Select Promotion Event Count"
-    description: "Count of select_promotion event occurrence in first 24 hours"
-    type: number
-    sql: ${TABLE}.cnt_select_promotion ;;
-  }
-
   dimension: user_engagement_event_count {
     group_label: "Behavioural Features"
     label: "User Engagement Event Count"
@@ -104,21 +48,86 @@ view: user_churn_common_dimensions {
     sql: ${TABLE}.cnt_user_engagement ;;
   }
 
-  dimension: view_item_event_count {
+  dimension: level_start_quickplay_count {
     group_label: "Behavioural Features"
-    label: "View Item Event Count"
-    description: "Count of view_item event occurrence in first 24 hours"
+    label: "Quickplay Level Start Count"
+    description: "Count of event where user starts quickplay"
     type: number
-    sql: ${TABLE}.cnt_view_item ;;
+    sql: ${TABLE}.cnt_level_start_quickplay ;;
   }
 
-  dimension: view_promotion_event_count {
+  dimension: level_end_quickplay_count {
     group_label: "Behavioural Features"
-    label: "View Promotion Event Count"
-    description: "Count of view_promotion event occurrence in first 24 hours"
+    label: "Quickplay Level End Count"
+    description: "Count of event where user ends quickplay"
     type: number
-    sql: ${TABLE}.cnt_view_promotion ;;
+    sql: ${TABLE}.cnt_level_end_quickplay ;;
   }
+
+  dimension: level_complete_quickplay_count {
+    group_label: "Behavioural Features"
+    label: "Quickplay Level Complete Count"
+    description: "Count of event where user completes quickplay"
+    type: number
+    sql: ${TABLE}.cnt_level_complete_quickplay ;;
+  }
+
+  dimension: level_reset_quickplay_count {
+    group_label: "Behavioural Features"
+    label: "Quickplay Level Reset Count"
+    description: "Count of event where user resets quickplay"
+    type: number
+    sql: ${TABLE}.cnt_level_reset_quickplay ;;
+  }
+
+  dimension: post_score_count {
+    group_label: "Behavioural Features"
+    label: "User Posts Score Event Count"
+    description: "Count of event where user posts score"
+    type: number
+    sql: ${TABLE}.cnt_post_score ;;
+  }
+
+  dimension: spend_virtual_currency_count {
+    group_label: "Behavioural Features"
+    label: "User Virtual Currency Spend Event Count"
+    description: "Count of event where user spends virtual currency"
+    type: number
+    sql: ${TABLE}.cnt_spend_virtual_currency ;;
+  }
+
+  dimension: ad_reward_count {
+    group_label: "Behavioural Features"
+    label: "User Ad Reward Event Count"
+    description: "Count of event where user receives ad reward"
+    type: number
+    sql: ${TABLE}.cnt_ad_reward ;;
+  }
+
+  dimension: challenge_a_friend_count {
+    group_label: "Behavioural Features"
+    label: "User Challenge A Friend Event Count"
+    description: "Count of event where user challenges a friend"
+    type: number
+    sql: ${TABLE}.cnt_challenge_a_friend ;;
+  }
+
+  dimension: completed_5_levels_count {
+    group_label: "Behavioural Features"
+    label: "User Five Level Completed Event Count"
+    description: "Count of event where user completed 5 levels"
+    type: number
+    sql: ${TABLE}.cnt_completed_5_levels ;;
+  }
+
+  dimension: use_extra_steps_count {
+    group_label: "Behavioural Features"
+    label: "Extra Steps Used Event Count"
+    description: "Count of event where user uses extra steps"
+    type: number
+    sql: ${TABLE}.cnt_use_extra_steps ;;
+  }
+
 # }
 
 # user_first_engagement time related features
@@ -139,23 +148,14 @@ view: user_churn_common_dimensions {
     sql: ${TABLE}.julianday ;;
   }
 
-  # dimension: month {
-  #   description: "Month of user's first engagement"
-  #   type: number
-  #   sql: ${TABLE}.month ;;
-  # }
-
   dimension_group: user_first_engagement {
     group_label: "Date related features"
     label: "User's first engagement"
     type: time
     timeframes: [
       raw,
-      time,
       date,
-      week,
       month,
-      quarter,
       year
     ]
     sql: ${TABLE}.user_first_engagement ;;
