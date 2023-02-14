@@ -2,7 +2,7 @@
 view: user_churn {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `bqml-accelerator.looker_bqml.ml_accelerator_user_gaming_churn`;;
+  sql_table_name: `cloud-training-demos.bqml_accelerator.ml_accelerator_user_gaming_churn`;;
 
 # Custom Training Split Flag
 # {
