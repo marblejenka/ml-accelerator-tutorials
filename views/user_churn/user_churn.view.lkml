@@ -188,8 +188,18 @@ view: user_churn {
   }
 # }
 
-  measure: count {
+  measure: user_count {
     type: count
-    drill_fields: []
+  }
+
+  measure: user_churn_count {
+    type: count
+    filters: [churn_indicator: "True"]
+  }
+
+  measure: churn_rate {
+    type: number
+    sql: 1.0*${user_churn_count} / NULLIF(${user_count},0) ;;
+    value_format_name: percent_2
   }
 }
