@@ -1,5 +1,5 @@
-view: predictive_maintenance {
-  sql_table_name: `bqml-accelerator.uci_predictive_maintenance.predictive_maintenance` ;;
+view: machine_failure {
+  sql_table_name: `machine-learning-accelerator.ml_accelerator_tutorials.machine_failure` ;;
 
   dimension: dataframe {
     type: string
@@ -41,7 +41,7 @@ view: predictive_maintenance {
   }
 
   dimension: machine_failed {
-    type: yesno
+    type: string
     sql:  CASE
             WHEN ${dataframe} = 'train' AND ${failure_type} <> 'No Failure' THEN TRUE
             WHEN ${dataframe} = 'train' AND ${failure_type} = 'No Failure' THEN FALSE
