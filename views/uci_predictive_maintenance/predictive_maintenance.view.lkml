@@ -4,7 +4,7 @@ view: predictive_maintenance {
   dimension: dataframe {
     type: string
     sql:  CASE
-            WHEN FARM_FINGERPRINT(${machine_id}) < 4602018618904989184 THEN 'train'
+            WHEN FARM_FINGERPRINT(${machine_id}) <= 151892338321851519 THEN 'train'
             ELSE 'predict'
           END
     ;;
@@ -40,11 +40,11 @@ view: predictive_maintenance {
     sql: ${TABLE}.Rotational_speed__rpm_ ;;
   }
 
-  dimension: machine_failure {
-    type: string
+  dimension: machine_failed {
+    type: yesno
     sql:  CASE
-            WHEN ${dataframe} = 'train' AND ${failure_type} <> 'No Failure' THEN 'Failure'
-            WHEN ${dataframe} = 'train' AND ${failure_type} = 'No Failure' THEN 'No Failure'
+            WHEN ${dataframe} = 'train' AND ${failure_type} <> 'No Failure' THEN TRUE
+            WHEN ${dataframe} = 'train' AND ${failure_type} = 'No Failure' THEN FALSE
             ELSE NULL
           END
     ;;

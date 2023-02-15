@@ -19,7 +19,7 @@ view: citi_bike_trips {
   dimension_group: start {
     type: time
     sql: ${TABLE}.starttime ;;
-    timeframes: [raw, date, time, day_of_week, hour_of_day]
+    timeframes: [raw, date, time, day_of_week, hour_of_day, minute, hour, month, quarter, year, week]
   }
 
   dimension_group: stop {
