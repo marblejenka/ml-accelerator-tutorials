@@ -22,7 +22,7 @@ view: gaming_app_user_churn {
   }
 # }
 
-# user ID
+# User ID
 # {
   dimension: user_id {
     primary_key: yes
@@ -33,7 +33,7 @@ view: gaming_app_user_churn {
   }
 # }
 
-# Demographic features
+# Demographic Features
 # {
   dimension: country {
     group_label: "Demographic Features"
@@ -61,7 +61,7 @@ view: gaming_app_user_churn {
   }
 # }
 
-# behavioral features in the first 24 hours of visiting the Google Merchandise Store
+# Behavioral Features (first 24 hours)
 # {
   dimension: user_engagement_event_count {
     group_label: "Behavioural Features"
@@ -153,31 +153,16 @@ view: gaming_app_user_churn {
 
 # }
 
-# user_first_engagement time related features
+# User First Engagement
 # {
-  dimension: dayofweek {
-    group_label: "Date related features"
-    label: "User's first engagement Day of Week"
-    description: "Day of the week of user's first engagement"
-    type: number
-    sql: ${TABLE}.dayofweek ;;
-  }
-
-  dimension: julianday {
-    group_label: "Date related features"
-    label: "User's first engagement Julianday"
-    description: "User's first engagement Julianday"
-    type: number
-    sql: ${TABLE}.julianday ;;
-  }
-
   dimension_group: user_first_engagement {
-    group_label: "Date related features"
-    label: "User's first engagement"
     type: time
     timeframes: [
       raw,
       date,
+      day_of_week,
+      day_of_week_index,
+      day_of_year,
       month,
       year
     ]
@@ -194,7 +179,7 @@ view: gaming_app_user_churn {
     filters: [churn_indicator: "True"]
   }
 
-  measure: churn_rate {
+  measure: user_churn_rate {
     type: number
     sql: 1.0*${user_churn_count} / NULLIF(${user_count},0) ;;
     value_format_name: percent_2
