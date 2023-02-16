@@ -1,5 +1,5 @@
 view: machine_failure {
-  sql_table_name: `machine-learning-accelerator.ml_accelerator_tutorials.machine_failure` ;;
+  sql_table_name: `machine-learning-accelerator.predictive_maintenance.machine_failure` ;;
 
   dimension: dataframe {
     type: string

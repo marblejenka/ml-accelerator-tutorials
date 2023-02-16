@@ -1,5 +1,5 @@
-view: gaming_app_user_churn {
-  sql_table_name: `machine-learning-accelerator.ml_accelerator_tutorials.gaming_app_user_churn` ;;
+view: gaming_user_churn {
+  sql_table_name: `machine-learning-accelerator.gaming_user_churn.user_churn` ;;
 
 # Custom Training Split Flag
 # {
