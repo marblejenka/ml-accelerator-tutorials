@@ -1,8 +1,5 @@
-# The name of this view in Looker is "User Churn"
-view: user_churn {
-  # The sql_table_name parameter indicates the underlying database table
-  # to be used for all fields in this view.
-  sql_table_name: `cloud-training-demos.bqml_accelerator.ml_accelerator_user_gaming_churn`;;
+view: gaming_app_user_churn {
+  sql_table_name: `machine-learning-accelerator.ml_accelerator_tutorials.gaming_app_user_churn` ;;
 
 # Custom Training Split Flag
 # {
