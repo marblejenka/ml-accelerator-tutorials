@@ -1,4 +1,4 @@
-view: customer_churn {
+view: customers {
   sql_table_name: `machine-learning-accelerator.telco_customer_churn.{% parameter dataframe %}` ;;
 
   parameter: dataframe {
