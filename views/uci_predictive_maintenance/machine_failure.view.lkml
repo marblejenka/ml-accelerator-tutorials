@@ -43,8 +43,8 @@ view: machine_failure {
   dimension: machine_failed {
     type: string
     sql:  CASE
-            WHEN ${dataframe} = 'train' AND ${failure_type} <> 'No Failure' THEN TRUE
-            WHEN ${dataframe} = 'train' AND ${failure_type} = 'No Failure' THEN FALSE
+            WHEN ${dataframe} = 'train' AND ${TABLE}.target = 1 THEN TRUE
+            WHEN ${dataframe} = 'train' AND ${TABLE}.target = 0 THEN FALSE
             ELSE NULL
           END
     ;;
