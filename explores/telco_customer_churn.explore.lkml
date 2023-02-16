@@ -1,5 +1,5 @@
 include: "/views/telco_customer_churn/*.view"
 
-explore: customers {
+explore: customer {
   label: "Telco Customer Churn"
 }
