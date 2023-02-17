@@ -46,9 +46,12 @@ view: customer {
   dimension: churn {
     type: string
     sql:  {% if dataframe._parameter_value == 'train' %}
-            ${TABLE}.churn
+            CASE
+              WHEN ${TABLE}.churn IS TRUE THEN 'Yes'
+              WHEN ${TABLE}.churn IS FALSE THEN 'No'
+            END
           {% elsif dataframe._parameter_value == 'test' %}
-            NULL
+            ''
           {% endif %}
     ;;
   }
@@ -123,8 +126,18 @@ view: customer {
     sql: ${TABLE}.number_vmail_messages ;;
   }
 
-  measure: count {
+  measure: customer_count {
     type: count
-    drill_fields: []
+  }
+
+  measure: churn_count {
+    type: count
+    filters: [churn: "Yes"]
+  }
+
+  measure: churn_rate {
+    type: number
+    sql: 1.0*${churn_count} / NULLIF(${customer_count},0) ;;
+    value_format_name: percent_1
   }
 }
