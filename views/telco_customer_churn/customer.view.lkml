@@ -44,6 +44,7 @@ view: customer {
   }
 
   dimension: churn {
+    label: "Churn (Yes / No)"
     type: string
     sql:  {% if dataframe._parameter_value == 'train' %}
             CASE
