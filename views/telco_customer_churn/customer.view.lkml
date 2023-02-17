@@ -29,12 +29,12 @@ view: customer {
   }
 
   dimension: international_plan {
-    type: string
+    type: yesno
     sql: ${TABLE}.international_plan ;;
   }
 
   dimension: voice_mail_plan {
-    type: string
+    type: yesno
     sql: ${TABLE}.voice_mail_plan ;;
   }
 
