@@ -18,11 +18,24 @@ view: customer {
     sql: ${TABLE}.customer_id ;;
   }
 
-  dimension: account_length {
+  dimension: account_duration_months {
+    hidden: no
     type: number
     sql: ${TABLE}.account_length ;;
   }
 
+  dimension: account_duration_years_group {
+    type: bin
+    bins: [2,4,6,8,10]
+    style: integer
+    sql: ${account_duration_years} ;;
+
+  }
+
+  dimension: account_duration_years {
+    type: number
+    sql: round(${account_duration_months}/12,0) ;;
+  }
   dimension: area_code {
     type: string
     sql: ${TABLE}.area_code ;;
@@ -55,6 +68,21 @@ view: customer {
             ''
           {% endif %}
     ;;
+  }
+
+  dimension: service_calls_group {
+    type: bin
+    bins: [0,1,2,3,4,5]
+    style: integer
+    sql: ${TABLE}.number_customer_service_calls ;;
+  }
+
+  dimension: total_day_charge_group {
+    type: bin
+    bins: [20,30,40]
+    style: integer
+    sql: ${TABLE}.total_day_charge;;
+    value_format_name: usd_0
   }
 
   measure: total_day_calls {
