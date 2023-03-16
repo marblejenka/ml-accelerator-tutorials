@@ -3,5 +3,5 @@ label: "ML Accelerator Tutorials"
 
 persist_for: "24 hours"
 
-include: "/explores/telco_customer_churn.explore"
-# include: "/dashboards/*.dashboard"
+include: "/explores/*.explore"
+include: "/dashboards/*.dashboard"
