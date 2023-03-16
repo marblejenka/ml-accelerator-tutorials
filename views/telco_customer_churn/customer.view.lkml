@@ -8,7 +8,7 @@ view: customer {
       value: "train"
     }
     allowed_value: {
-      value: "test"
+      value: "test" label: "predict"
     }
   }
 
