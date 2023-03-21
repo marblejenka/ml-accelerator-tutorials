@@ -1,51 +1,52 @@
-<h1><span style="color:#2d7eea">README - Your LookML Project</span></h1>
+<h1><span style="color:#2d7eea">README - Machine Learning Accelerator Tutorials</span></h1>
 
-<h2><span style="color:#2d7eea">LookML Overview</span></h2>
+<h2><span style="color:#2d7eea">Overview</span></h2>
 
-LookML is a data modeling language for describing dimensions, fields, aggregates and relationships based on SQL.
+This Looker Block defines Explores based on several BigQuery public datasets and is intended to demonstrate how business analysts can use the **Machine Learning Accelertor** to access BigQuery and Vertex AI's machine learning capabilities. The data that powers the block is only available in BigQuery and will work with any Looker instance with an existing BigQuery connection. Note, in order to use these Explores with the Machine Learning Accelerator application, this model must be configured to use the same BigQuery connection as the application.
 
-LookML is powerful because it:
+<h2><span style="color:#2d7eea">Machine Learning Accelerator</span></h2>
 
-- **Is all about reusability**: Most data analysis requires the same work to be done over and over again. You extract
-raw data, prepare it, deliver an analysis... and then are never able touse any of that work again. This is hugely
-inefficient, since the next analysis often involves many of the same steps. With LookML, once you define a
-dimension or a measure, you continue to build on it, rather than having to rewrite it again and again.
-- **Empowers end users**:  The data model that data analysts and developers create in LookML condenses and
-encapsulates the complexity of SQL, it and lets analysts get the knowledge about what their data means out of
-their heads so others can use it. This enables non-technical users to do their jobs &mdash; building dashboards,
-drilling to row-level detail, and accessing complex metrics &mdash; without having to worry about what’s behind the curtain.
-- **Allows for data governance**: By defining business metrics in LookML, you can ensure that Looker is always a
-credible single source of truth.
+The ML Accelerator is a purpose-built Looker application designed to give business users access to BigQuery and Vertex AI's machine learning capabilities. It provides a user-friendly interface designed to guide the user through each step of creating a machine learning model. Because of its simple, no-code interface, the application serves as a pathway for business analysts to learn and use predictive analytics in Looker.
 
-The Looker application uses a model written in LookML to construct SQL queries against a particular database that
-business analysts can [Explore](https://docs.looker.com/r/exploring-data) on. For an overview on the basics of LookML, see [What is LookML?](https://docs.looker.com/r/what-is-lookml)
+View the [ML Model Creation Flow](https://github.com/looker-open-source/app-ml-accelerator/blob/main/ML%20Model%20Creation%20Flow.md) document for an example of an end-to-end user journey.
 
-<h2><span style="color:#2d7eea">Learn to Speak Looker</span></h2>
+To install the ML Accelerator application follow these [installation instructions](https://github.com/looker-open-source/app-ml-accelerator/blob/main/README.md)
 
-A LookML project is a collection of LookML files that describes a set of related [views](https://docs.looker.com/r/terms/view-file), [models](https://docs.looker.com/r/terms/model-file), and [Explores](https://docs.looker.com/r/terms/explore).
-- A [view](https://docs.looker.com/r/terms/view-file) (.view files) contains information about how to access or calculate information from each table (or
-across multiple joined tables). Here you’ll typically define the view, its dimensions and measures, and its field sets.
-- A [model](https://docs.looker.com/r/terms/model-file) (.model file) contains information about which tables to use and how they should be joined together.
-Here you’ll typically define the model, its Explores, and its joins.
-- An [Explore](https://docs.looker.com/r/terms/explore) is the starting point for business users to query data, and it is the end result of the LookML you are
-writing. To see the Explores in this project, select an Explore from the Explore menu.
+Report bugs or feature requests with [this form](https://docs.google.com/forms/d/e/1FAIpQLSd97ptoU3TUuasZeFjSBHT9FQiyrDzjHUm7NTspEjz5kwNSAA/viewform). Contact [ml-accelerator-feedback@google.com](mailto:ml-accelerator-feedback@google.com) with questions or comments.
 
-<h2><span style="color:#2d7eea">Exploring Data</span></h2>
+---
 
-Ad-hoc data discovery is one of Looker’s most powerful and unique features. As you evaluate use cases for your
-trial, consider what business areas you would like to explore. Open the Explore menu in the main navigation to see
-the Explores you are building.
+### ML ACCELERATOR TUTORIAL INSTALLATION INSTRUCTIONS
 
-<h2><span style="color:#2d7eea">The Development Workflow</span></h2>
 
-To support a multi-developer environment, Looker is integrated with Git for version control. Follow [these directions](https://docs.looker.com/r/develop/git-setup)
-to set up Git for your project. To edit LookML, expand the Develop drop-down and toggle on [Development Mode](https://docs.looker.com/r/terms/dev-mode). In
-Development Mode, changes you make to the LookML model exist only in your account until you commit the
-changes and push them to your production model.
+#### 1. Installation Options
 
-<h2><span style="color:#2d7eea">Additional Resources</span></h2>
+The Looker Block can be installed directly from [Looker Marketplace](https://marketplace.looker.com/) (recommended) or manually installed following the steps below.
 
-To learn more about LookML and how to develop visit:
-- [Looker User Guide](https://looker.com/guide)
-- [Looker Help Center](https://help.looker.com)
-- [Looker University](https://training.looker.com/)
+  **Option A: Marketplace Install**
+
+  Refer to the [Looker Docs for installing a tool from Marketplace](https://cloud.google.com/looker/docs/marketplace#installing_a_tool_from_the_marketplace). Select the BigQuery connection name chosen in Step 1 during installation.
+
+  **Option B: Manual Install**
+  - [Fork this GitHub repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository)
+  - [Create a blank LookML project](https://cloud.google.com/looker/docs/create-projects#creating_a_blank_project)
+  - [Connect the blank LookML project to the new fork repository](https://cloud.google.com/looker/docs/setting-up-git-connection)
+  - Update the value of the CONNECTION_NAME constant in the `manifest.lkml` file
+  - [Commit and deploy changes to production](https://cloud.google.com/looker/docs/version-control-and-deploying-changes#getting_your_changes_to_production)
+
+#### 2. Choose a BigQuery Connection
+
+To use with the ML Accelerator application, you will need to select the same BigQuery connection used for the application. Only Looker Explores using the same connection as the application will be accessible from within the application.
+
+
+---
+
+### EXPLORES
+
+The following Explores can be used to demonstrate use of the ML Accelerator application.
+
+  | **Explore Name**                  | **Description**                             | **Tutorial**
+  |---------------------------------------------------|-----------------------------------------------------------|
+  | [NYC Citi Bike Trips](https://pantheon.corp.google.com/marketplace/product/city-of-new-york/nyc-citi-bike)       | Citi Bike is the nation's largest bike share program, with 10,000 bikes and 600 stations across Manhattan, Brooklyn, Queens, and Jersey City. This dataset includes Citi Bike trips since Citi Bike launched in September 2013 and is updated daily. The data has been processed by Citi Bike to remove trips that are taken by staff to service and inspect the system, as well as any trips below 60 seconds in length, which are considered false starts. | use to ????? |
+  | [Purchase Propensity with Google Analytics](https://pantheon.corp.google.com/marketplace/product/obfuscated-ga360-data/obfuscated-ga360-data)                    | The dataset provides 12 months (August 2016 to August 2017) of obfuscated Google Analytics 360 data from the Google Merchandise Store , a real ecommerce store that sells Google-branded merchandise, in BigQuery. This Explore provides bounces (did customer leave site immediately) and time on site during a customer's first visit to merchandise site. It also includes labeled examples as to whether the customer made a purchase during return visit. With this dataset, you can build an ML model is to get the probability of future purchase based on the data gleaned about their first session.         | Create a Machine Learning model with ML Accelerator to predict whether or not a new user is likely to purchase in the future. Identifying these high-value users can help your marketing team to target them with special promotions and ad campaigns to ensure a conversion while they comparison shop between visits to the ecommerce site.  |
+  | [Census Adult Income](https://pantheon.corp.google.com/bigquery/analytics-hub/exchanges(analyticshub:projects/1057666841514/locations/us/dataExchanges/google_cloud_public_datasets_17e74966199/listings/372e6bee11a54d0c83738d9c1e0fc461)) | This Explore contains the demographic and income information of US residents from 2000 and 2010. The data includes employment status, job category, level of education, and income data. Census participants fall into one of two income brackets: <=50K or >50K. The dataframe column divides the dataset into Training (80%), Evaluation (10%) and Prediction (10%).  |  Create a classification model to predict whether a US Census respondent's income falls into one of two ranges based on the respondent's demographic attributes. |
