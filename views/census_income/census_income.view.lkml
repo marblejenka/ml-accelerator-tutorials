@@ -1,4 +1,4 @@
-view: census_adult_income {
+view: census_income {
   derived_table: {
     sql:  SELECT *, GENERATE_UUID() as unique_id
           FROM `bigquery-public-data.ml_datasets.census_adult_income`
@@ -32,11 +32,10 @@ view: census_adult_income {
 
   dimension: dataframe {
     type: string
-    description: "Indicates if record belongs to the Training, Evaluation or Prediction dataframes"
+    description: "Indicates if record belongs to the Training or Prediction dataframes"
     sql:  CASE
-            WHEN MOD(functional_weight, 10) < 8 THEN 'training'
-            WHEN MOD(functional_weight, 10) = 8 THEN 'evaluation'
-            WHEN MOD(functional_weight, 10) = 9 THEN 'prediction'
+            WHEN MOD(functional_weight, 10) <= 8 THEN 'train'
+            else 'predict'
           END ;;
   }
 
@@ -54,7 +53,8 @@ view: census_adult_income {
 
   dimension: functional_weight {
     type: number
-    description: "Sample weight of the individual from the original Census data. How likely they were to be included in this dataset, based on their demographic characteristics vs. whole-population estimates."
+    hidden: yes
+    description: "Sample weight of the individual from the original Census data. Use to select random samples"
     sql: ${TABLE}.functional_weight ;;
   }
 
@@ -67,12 +67,12 @@ view: census_adult_income {
   dimension: income_bracket {
     type: string
     description: "Either \">50K\" or \"<=50K\" based on income."
-    # sql: ${TABLE}.income_bracket ;;
+    # for tutorial, set income bracket values to null for those in the predict dataset
     sql: CASE
-            WHEN ${dataframe} = 'training' THEN ${TABLE}.income_bracket
-            WHEN ${dataframe} = 'evaluation' THEN ${TABLE}.income_bracket
-            WHEN ${dataframe} = 'prediction' THEN NULL
+            WHEN ${dataframe} = 'train' THEN ${TABLE}.income_bracket
+            WHEN ${dataframe} = 'predict' THEN NULL
           END ;;
+
   }
 
   dimension: marital_status {
@@ -81,7 +81,7 @@ view: census_adult_income {
     sql: ${TABLE}.marital_status ;;
   }
 
-  dimension: native_country {
+  dimension: country {
     type: string
     description: "Country of birth"
     sql: ${TABLE}.native_country ;;
@@ -105,7 +105,7 @@ view: census_adult_income {
     sql: ${TABLE}.relationship ;;
   }
 
-  dimension: sex {
+  dimension: gender {
     type: string
     description: "Gender"
     sql: ${TABLE}.sex ;;
@@ -119,6 +119,6 @@ view: census_adult_income {
 
   measure: count {
     type: count
-    drill_fields: [sex, age, race, native_country, education, marital_status, occupation, income_bracket]
+    drill_fields: [gender, age, race, country, education, marital_status, occupation, income_bracket]
   }
 }

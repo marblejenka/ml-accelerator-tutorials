@@ -1,3 +1,3 @@
-include: "/views/census_adult_income/*.view"
+include: "/views/census_income/*.view"
 
-explore: census_adult_income {}
+explore: census_income {}
