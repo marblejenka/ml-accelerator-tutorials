@@ -18,7 +18,10 @@ view: machine_failure {
   dimension: failure_type {
     type: string
     sql:  CASE
-            WHEN ${dataframe} = 'train' THEN ${TABLE}.Failure_Type
+            when ${dataframe} = 'train'  then
+                case when ${machine_failed} = 'Yes' THEN regexp_replace(${TABLE}.Failure_Type,'No Failure','Random Failure')
+                     when ${machine_failed} = 'No' then 'No Failure'
+                     else ${TABLE}.Failure_Type end
             ELSE NULL
           END
     ;;
@@ -43,8 +46,8 @@ view: machine_failure {
   dimension: machine_failed {
     type: string
     sql:  CASE
-            WHEN ${dataframe} = 'train' AND ${TABLE}.target = 1 THEN TRUE
-            WHEN ${dataframe} = 'train' AND ${TABLE}.target = 0 THEN FALSE
+            WHEN ${dataframe} = 'train' AND ${TABLE}.target = 1 THEN 'Yes'
+            WHEN ${dataframe} = 'train' AND ${TABLE}.target = 0 THEN 'No'
             ELSE NULL
           END
     ;;
