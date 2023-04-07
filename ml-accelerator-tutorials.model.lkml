@@ -1,4 +1,4 @@
-connection: "ml-accelerator"
+connection: "@{CONNECTION_NAME}"
 label: "ML Accelerator Tutorials"
 
 persist_for: "24 hours"
