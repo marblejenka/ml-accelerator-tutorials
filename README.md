@@ -2,13 +2,13 @@
 
 <h2><span style="color:#2d7eea">Overview</span></h2>
 
-This Looker Block defines Explores based on several BigQuery public datasets and is intended to demonstrate how business analysts can use the **Machine Learning Accelerator** (available for download through [Looker Marketplace](/marketplace/view/bqml-ext) to access BigQuery and Vertex AI's machine learning capabilities. The data that powers the block is only available in BigQuery and will work with any Looker instance with an existing BigQuery connection.
+This Looker Block defines Explores based on several BigQuery public datasets and is intended to demonstrate how business analysts can use the **Machine Learning Accelerator** (available for download through [Looker Marketplace](/marketplace/view/bqml-ext)) to access BigQuery and Vertex AI's machine learning capabilities. The data that powers the block is only available in BigQuery and will work with any Looker instance with an existing BigQuery connection.
 
 ><font size = "3"><font color = "red"> <i class='fa fa-exclamation-triangle'></i><b>Note, in order to use these Explores with the Machine Learning Accelerator application, this model must be configured to use the same BigQuery connection as the application.
 
 <h2><span style="color:#2d7eea">Machine Learning Accelerator</span></h2>
 
-The ML Accelerator is a purpose-built Looker application designed to give business users access to BigQuery and Vertex AI's machine learning capabilities. It provides a user-friendly interface designed to guide the user through each step of creating a machine learning model. Because of its simple, no-code interface, the application serves as a pathway for business analysts to learn and use predictive analytics in Looker. Download application [here](/marketplace/view/bqml-ext)
+The ML Accelerator is a purpose-built Looker application designed to give business users access to BigQuery and Vertex AI's machine learning capabilities. It provides a user-friendly interface designed to guide the user through each step of creating a machine learning model. Because of its simple, no-code interface, the application serves as a pathway for business analysts to learn and use predictive analytics in Looker. From Looker, download the application [here](/marketplace/view/bqml-ext).
 
 View the [ML Model Creation Flow](https://github.com/looker-open-source/app-ml-accelerator/blob/main/ML%20Model%20Creation%20Flow.md) document for an example of an end-to-end user journey.
 
