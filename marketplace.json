@@ -1,9 +1,9 @@
 {
-  "label": "CCAI Insights",
+  "label": "Machine Learning Accelerator Tutorials",
   "category_label": "Models",
   "branding": {
-    "image_uri": "https://marketplace-api.looker.com/block-icons/ccai_icon.png",
-    "tagline": "CCAI Insights integrates with the Looker Block to aggregate data outside of contact center sources to provide a more holistic view of the business."
+    "image_uri": "https://marketplace-api.looker.com/app-icons/bqml-ext.png",
+    "tagline": "Demonstrate Machine Learning Accelerator application with these BigQuery Public Datasets."
   },
 
   "constants": {
