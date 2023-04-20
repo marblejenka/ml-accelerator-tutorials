@@ -6,7 +6,7 @@
   elements:
   - title: Churn Rate
     name: Churn Rate
-    model: ml_accelerator_tutorials
+    model: ml-accelerator-tutorials
     explore: telco_customer_churn
     type: single_value
     fields: [customer.churn_rate, customer.churn_count, customer.customer_count]
@@ -76,7 +76,7 @@
     height: 4
   - title: Churn Rate 3 times higher for International Plan Users
     name: Churn Rate 3 times higher for International Plan Users
-    model: ml_accelerator_tutorials
+    model: ml-accelerator-tutorials
     explore: telco_customer_churn
     type: looker_bar
     fields: [customer.churn_rate, customer.international_plan]
@@ -145,7 +145,7 @@
     height: 4
   - title: Users with Voice Mail Plan are Less Likely to Churn
     name: Users with Voice Mail Plan are Less Likely to Churn
-    model: ml_accelerator_tutorials
+    model: ml-accelerator-tutorials
     explore: telco_customer_churn
     type: looker_bar
     fields: [customer.churn_rate, customer.voice_mail_plan]
@@ -214,7 +214,7 @@
     height: 4
   - title: Churn Increases Significantly after 4 Service Calls
     name: Churn Increases Significantly after 4 Service Calls
-    model: ml_accelerator_tutorials
+    model: ml-accelerator-tutorials
     explore: telco_customer_churn
     type: looker_bar
     fields: [customer.churn_rate, customer.service_calls_group]
@@ -284,7 +284,7 @@
     height: 8
   - title: Once Day Charges reach $40, Churn Rate Jumps
     name: Once Day Charges reach $40, Churn Rate Jumps
-    model: ml_accelerator_tutorials
+    model: ml-accelerator-tutorials
     explore: telco_customer_churn
     type: looker_bar
     fields: [customer.churn_rate, customer.total_day_charge_group]
@@ -355,7 +355,7 @@
     height: 8
   - title: Churn only Slightly Higher in Long-time Users
     name: Churn only Slightly Higher in Long-time Users
-    model: ml_accelerator_tutorials
+    model: ml-accelerator-tutorials
     explore: telco_customer_churn
     type: looker_bar
     fields: [customer.churn_rate, customer.customer_count, customer.account_duration_years_group]
