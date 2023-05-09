@@ -1,7 +1,7 @@
-project_name: "ml-accelerator-tutorials"
+project_name: "ml-accelerator-tutorials-mannual"
 
 constant: CONNECTION_NAME {
-  value: "ml-accelerator"
+  value: "s2query"
   #value: "bigquery_publicdata_standard_sql"
   export: override_required
 }
